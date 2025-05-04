@@ -7,7 +7,7 @@ from google.cloud import vision
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "superb-webbing-455211-d7-2e140293e808.json"
 
 # Google Vision API client
-client = vision.ImageAnnotatorClient()
+
 
 # Label-to-category mapping
 categories = {
@@ -33,6 +33,7 @@ API_KEY = "1-288389cf-7bc1-48bc-be62-f5d43693d830"
 BASE_URL = "http://rendfejl1003.northeurope.cloudapp.azure.com:8080/DesktopModules/Hotcakes/API/rest/v1"
 
 def detect_animal_from_bytes(image_bytes: bytes):
+    client = vision.ImageAnnotatorClient()
     image = vision.Image(content=image_bytes)
     response = client.label_detection(image=image)
     labels = response.label_annotations
